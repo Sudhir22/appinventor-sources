@@ -7,6 +7,7 @@
 package com.google.appinventor.client.boxes;
 
 import com.google.appinventor.client.explorer.youngandroid.GalleryList;
+
 import com.google.gwt.user.client.ui.FlowPanel;
 
 

@@ -7,6 +7,7 @@
 package com.google.appinventor.buildserver;
 
 import com.google.appinventor.common.utils.StringUtils;
+
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Charsets;
 import com.google.common.base.Preconditions;

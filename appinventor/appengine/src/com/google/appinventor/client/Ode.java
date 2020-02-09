@@ -8,6 +8,8 @@ package com.google.appinventor.client;
 
 import java.util.Random;
 
+
+
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -744,7 +746,8 @@ public class Ode implements EntryPoint {
   @Override
   public void onModuleLoad() {
     Tracking.trackPageview();
-
+    
+    LOG.info("Inside Ode Module");
     // Handler for any otherwise unhandled exceptions
     GWT.setUncaughtExceptionHandler(new GWT.UncaughtExceptionHandler() {
       @Override
@@ -788,7 +791,7 @@ public class Ode implements EntryPoint {
     OdeAsyncCallback<Config> callback = new OdeAsyncCallback<Config>(
         // failure message
         MESSAGES.serverUnavailable()) {
-
+    	
       @Override
       public void onSuccess(Config result) {
         config = result;

@@ -7,6 +7,7 @@
 package com.google.appinventor.server.storage;
 
 import com.googlecode.objectify.Key;
+
 import com.googlecode.objectify.annotation.Cached;
 import com.googlecode.objectify.annotation.Parent;
 import com.googlecode.objectify.annotation.Indexed;
@@ -58,6 +59,9 @@ public class StoredData {
     public int type;
     String sessionid;           // uuid of active session
     String password;            // Hashed (PBKDF2 hashing) password
+    
+    public int age;
+    
 
     // Path to template project passed as GET parameter
     String templatePath;

@@ -7,6 +7,7 @@
 package com.google.appinventor.client;
 
 import com.google.appinventor.client.boxes.ProjectListBox;
+
 import com.google.appinventor.client.editor.youngandroid.BlocklyPanel;
 import com.google.appinventor.client.editor.youngandroid.YaBlocksEditor;
 import com.google.appinventor.client.explorer.commands.BuildCommand;
@@ -322,7 +323,7 @@ public class TopToolbar extends Composite {
         new AboutAction()));
     helpItems.add(null);
     Config config = Ode.getSystemConfig();
-    String libraryUrl = config.getLibraryUrl();
+    /**String libraryUrl = config.getLibraryUrl();
     if (!Strings.isNullOrEmpty(libraryUrl)) {
       helpItems.add(new DropDownItem(WIDGET_NAME_LIBRARY, MESSAGES.libraryMenuItem(),
           new WindowOpenAction(libraryUrl)));
@@ -336,12 +337,13 @@ public class TopToolbar extends Composite {
     if (!Strings.isNullOrEmpty(extensionsUrl)) {
       helpItems.add(new DropDownItem(WIDGET_NAME_EXTENSIONS, MESSAGES.extensionsMenuItem(),
           new WindowOpenAction(extensionsUrl)));
-    }
+    }**/
     String tutorialsUrl = config.getTutorialsUrl();
     if (!Strings.isNullOrEmpty(tutorialsUrl)) {
       helpItems.add(new DropDownItem(WIDGET_NAME_TUTORIALS, MESSAGES.tutorialsMenuItem(),
           new WindowOpenAction(tutorialsUrl)));
     }
+    /**
     String troubleshootingUrl = config.getTroubleshootingUrl();
     if (!Strings.isNullOrEmpty(troubleshootingUrl)) {
       helpItems.add(new DropDownItem(WIDGET_NAME_TROUBLESHOOTING, MESSAGES.troubleshootingMenuItem(),
@@ -364,7 +366,7 @@ public class TopToolbar extends Composite {
     helpItems.add(new DropDownItem(WIDGET_NAME_COMPANIONUPDATE, MESSAGES.companionUpdate(),
         new CompanionUpdateAction()));
     helpItems.add(new DropDownItem(WIDGET_NAME_SHOWSPLASH, MESSAGES.showSplashMenuItem(),
-        new ShowSplashAction()));
+        new ShowSplashAction()));**/
     refreshMenu(helpDropDown, helpItems);
   }
 
@@ -828,7 +830,7 @@ public class TopToolbar extends Composite {
     @Override
     public void execute() {
       final DialogBox db = new DialogBox(false, true);
-      db.setText("About MIT App Inventor");
+      db.setText("About App Creator");
       db.setStyleName("ode-DialogBox");
       db.setHeight("200px");
       db.setWidth("400px");

@@ -23,7 +23,7 @@ function createHeader(breadcrumbs) {
     document.write('</script>');
     document.write('<div class="header-login">');
     document.write('<div class="header-login-greeting"> \
-              Learn about App Inventor  \
+              Learn about Creator  \
             </div>');
     document.write('</div>');
     document.write('</div>');

@@ -60,7 +60,7 @@ public interface StorageIo {
    * @param userId unique user id
    * @return user data
    */
-  User getUser(String userId, String email);
+  User getUser(String userId, String email,int age);
 
   /**
    * Returns user data given user email address. If the user data for the given email
@@ -70,7 +70,7 @@ public interface StorageIo {
    * @param user email address
    * @return user data
    */
-  User getUserFromEmail(String email);
+  User getUserFromEmail(String email,int age);
 
   /**
    * Sets the stored email address for user with id userId

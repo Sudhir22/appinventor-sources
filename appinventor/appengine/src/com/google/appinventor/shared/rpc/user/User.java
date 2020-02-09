@@ -19,6 +19,9 @@ public class User implements IsSerializable, UserInfoProvider, Serializable {
 
   // user email address
   private String email;
+  
+  //user age
+  private int age;
 
   // user display name
   private String name;
@@ -69,9 +72,10 @@ public class User implements IsSerializable, UserInfoProvider, Serializable {
    * @param tosAccepted TOS accepted?
    * @param sessionId client session Id
    */
-  public User(String id, String email, String name, String link, int emailFrequency, boolean tosAccepted, boolean isAdmin, int type, String sessionId) {
+  public User(String id, String email, int age,String name, String link, int emailFrequency, boolean tosAccepted, boolean isAdmin, int type, String sessionId) {
     this.id = id;
     this.email = email;
+    this.age = age;
     if (name==null)
       this.name = getDefaultName();
     else
@@ -329,7 +333,7 @@ public class User implements IsSerializable, UserInfoProvider, Serializable {
   }
 
   public User copy() {
-    User retval = new User(id, email, name, link, emailFrequency, tosAccepted, isAdmin, type, sessionId);
+    User retval = new User(id, email, age, name, link, emailFrequency, tosAccepted, isAdmin, type, sessionId);
     // We set the isReadOnly flag in the copy in this fashion so we do not have to
     // modify all the places in the source where we create a "User" object. There are
     // only a few places where we assert or read the isReadOnly flag, so we want to
@@ -338,5 +342,13 @@ public class User implements IsSerializable, UserInfoProvider, Serializable {
     retval.setBackpackId(this.backPackId);
     retval.name = this.name;
     return retval;
+  }
+
+  public int getAge() {
+	return age;
+  }
+
+  public void setAge(int age) {
+	this.age = age;
   }
 }

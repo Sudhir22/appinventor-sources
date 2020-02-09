@@ -6,6 +6,7 @@
 package com.google.appinventor.server;
 
 import com.google.appengine.api.users.UserService;
+
 import com.google.appengine.api.users.UserServiceFactory;
 
 import com.google.appinventor.server.flags.Flag;
@@ -84,21 +85,27 @@ public class LoginServlet extends HttpServlet {
 
     PrintWriter out;
     String [] components = req.getRequestURI().split("/");
-    if (DEBUG) {
-      LOG.info("requestURI = " + req.getRequestURI());
-    }
+    
+    LOG.info("requestURI = " + req.getRequestURI());
     String page = getPage(req);
+    LOG.info("Page "+page);
 
     OdeAuthFilter.UserInfo userInfo = OdeAuthFilter.getUserInfo(req);
-
+    
     String queryString = req.getQueryString();
+    //System.out.println(queryString);
     HashMap<String, String> params = getQueryMap(queryString);
     // These params are passed around so they can take effect even if we
     // were not logged in.
+    LOG.info(queryString);
     String locale = params.get("locale");
     String repo = params.get("repo");
     String galleryId = params.get("galleryId");
     String redirect = params.get("redirect");
+    String age="0";
+    
+    
+    	
 
     if (DEBUG) {
       LOG.info("locale = " + locale + " bundle: " + new Locale(locale));
@@ -118,9 +125,12 @@ public class LoginServlet extends HttpServlet {
         fail(req, resp, "Google Authentication Failed"); // Not sure what else to do
         return;
       }
+     
+      LOG.info("Inside google");
+      LOG.info(String.valueOf(params.get("age")));
       String email = apiUser.getEmail();
       String userId = apiUser.getUserId();
-      User user = storageIo.getUser(userId, email);
+      User user = storageIo.getUser(userId, email,Integer.parseInt(age));
 
       userInfo = new OdeAuthFilter.UserInfo(); // Create a new userInfo object
 
@@ -151,12 +161,14 @@ public class LoginServlet extends HttpServlet {
       uri = new UriBuilder(uri)
         .add("locale", locale)
         .add("repo", repo)
+        .add("Age",String.valueOf(age))
         .add("galleryId", galleryId).build();
       resp.sendRedirect(uri);
       return;
     } else {
       if (useLocal.get() == false) {
         if (useGoogle.get() == false) {
+          LOG.info("Inside usegooogle true");
           out = setCookieOutput(userInfo, resp);
           out.println("<html><head><title>Error</title></head>\n");
           out.println("<body><h1>App Inventor is Mis-Configured</h1>\n");
@@ -165,10 +177,12 @@ public class LoginServlet extends HttpServlet {
           out.println("</html>\n");
           return;
         }
+        LOG.info("Inside other "+ age);
         String uri = new UriBuilder("/login/google")
           .add("locale", "en".equals(locale) ? null : locale)
           .add("repo", repo)
           .add("galleryId", galleryId)
+          .add("age", String.valueOf(age))
           .add("redirect", redirect).build();
         resp.sendRedirect(uri);
         return;
@@ -191,7 +205,8 @@ public class LoginServlet extends HttpServlet {
       if (DEBUG) {
         LOG.info("setpw email = " + data.email);
       }
-      User user = storageIo.getUserFromEmail(data.email);
+      //int age = Integer.parseInt(req.getParameter("Age"));
+      User user = storageIo.getUserFromEmail(data.email,Integer.parseInt("age"));
       userInfo = new OdeAuthFilter.UserInfo(); // Create new userInfo object
       userInfo.setUserId(user.getUserId()); // This effectively logs us in!
       out = setCookieOutput(userInfo, resp);
@@ -238,6 +253,7 @@ public class LoginServlet extends HttpServlet {
     } else {
       req.setAttribute("useGoogleLabel", "false");
     }
+    //int age =Integer.parseInt(req.getParameter("Age"));
     req.setAttribute("emailAddressLabel", emailAddress);
     req.setAttribute("passwordLabel", password);
     req.setAttribute("loginLabel", login);
@@ -248,6 +264,7 @@ public class LoginServlet extends HttpServlet {
     req.setAttribute("repo", repo);
     req.setAttribute("locale", locale);
     req.setAttribute("galleryId", galleryId);
+    req.setAttribute("age", age);
     try {
       req.getRequestDispatcher("/login.jsp").forward(req, resp);
     } catch (ServletException e) {
@@ -279,7 +296,8 @@ public class LoginServlet extends HttpServlet {
     String repo = params.get("repo");
     String galleryId = params.get("galleryId");
     String redirect = params.get("redirect");
-
+    int age = 0;
+    
     if (locale == null) {
       locale = "en";
     }
@@ -339,13 +357,23 @@ public class LoginServlet extends HttpServlet {
 
     String email = params.get("email");
     String password = params.get("password"); // We don't check it now
-    User user = storageIo.getUserFromEmail(email);
+    User user = storageIo.getUserFromEmail(email,age);
+    //LOG.info(user.getUserEmail());
     boolean validLogin = false;
 
     String hash = user.getPassword();
     if ((hash == null) || hash.equals("")) {
-      fail(req, resp, "No Password Set for User");
-      return;
+      try {
+		hash=PasswordHash.createHash(password);
+		storageIo.setUserPassword(user.getUserId(), hash);
+	} catch (NoSuchAlgorithmException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (InvalidKeySpecException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+      
     }
 
     try {
