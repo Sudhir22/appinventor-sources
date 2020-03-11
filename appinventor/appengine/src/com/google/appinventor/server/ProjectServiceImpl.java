@@ -264,8 +264,18 @@ public class ProjectServiceImpl extends OdeRemoteServiceServlet implements Proje
   @Override
   public List<UserProject> getProjectInfos() {
     String userId = userInfoProvider.getUserId();
-    List<Long> projectIds = storageIo.getProjects(userId);
-    return makeUserProjects(userId, projectIds);
+    long currentProjId = storageIo.getCurrentProjId(userId).get(0);
+    if(userInfoProvider.getIsAdmin() && currentProjId!=0)
+    {
+    	List<Long> projectIds = storageIo.getAllProjects(currentProjId);
+    	return makeUserProjects(userId, projectIds);
+    }
+    else
+    {
+    	List<Long> projectIds = storageIo.getProjects(userId);
+    	return makeUserProjects(userId, projectIds);
+    }
+    
   }
 
   /**

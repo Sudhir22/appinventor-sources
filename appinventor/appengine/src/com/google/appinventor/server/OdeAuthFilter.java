@@ -257,6 +257,7 @@ public class OdeAuthFilter implements Filter {
     boolean isAdmin = false;
     boolean isReadOnly = false;
     long ts;
+    String projID = "0";
 
     transient boolean modified = false;
 
@@ -297,6 +298,16 @@ public class OdeAuthFilter implements Filter {
       modified = true;
     }
 
+    public String getProjId() {
+        return projID;
+      }
+
+    public void setProjId(String projID) {
+        this.projID = projID;
+        modified = true;
+      }
+
+
     public String buildCookie(boolean ifNeeded) {
       try {
         long offset = System.currentTimeMillis() - this.ts;
@@ -311,6 +322,7 @@ public class OdeAuthFilter implements Filter {
             .setUuid(this.userId)
             .setTs(this.ts)
             .setIsAdmin(this.isAdmin)
+            .setOneProjectId(Long.parseLong(this.projID))
             .setIsReadOnly(this.isReadOnly).build();
           return Base64Coder.encode(crypter.encrypt(cookie.toByteArray()));
         } else {

@@ -82,5 +82,7 @@ public interface UserInfoProvider {
   boolean isReadOnly();
 
   void setSessionId(String SessionId);
+  
+  long getCurrentProjId();
 
 }

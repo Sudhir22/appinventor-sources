@@ -103,6 +103,13 @@ public interface StorageIo {
   void setUserPassword(String userId, String password);
 
   /**
+   * Set the projectId for current admin user 
+   * @param userId
+   * @param projectId
+   */
+  void setUserprojectId(String userId,long projectId);
+  
+  /**
    * Returns a string with the user's settings.
    *
    * @param userId user id
@@ -201,6 +208,12 @@ public interface StorageIo {
    */
   List<Long> getProjects(String userId);
 
+  /**
+   * Returns all the projects when user is an admin
+   * @return
+   */
+  List<Long> getAllProjects(long currentProjId);
+  
   /**
    * sets a projects gallery id when it is published
    * @param userId a user Id (the request is made on behalf of this user)*
@@ -452,6 +465,12 @@ public interface StorageIo {
    * @return galleryId
    */
   long getProjectAttributionId(final long projectId);
+  
+  /**
+   * Updates the projectStatus so that it can be opened by evaluators
+   * @param projectId
+   */
+  void updateProjectStatus(final long projectId);
 
   /**
    * Uploads a file.
@@ -726,4 +745,10 @@ public interface StorageIo {
    */
   void assertUserHasProject(String userId, long projectId);
 
+  /**
+   * Get the current ProjId for the user
+   * @param userId
+   * @return
+   */
+  List<Long> getCurrentProjId(String userId);
 }

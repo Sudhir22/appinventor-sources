@@ -293,9 +293,9 @@ public class TopPanel extends Composite {
     logo.setSize("180px", "40px");
     logo.setStyleName("ode-Logo");
     String logoUrl = ode.getSystemConfig().getLogoUrl();
-    if (!Strings.isNullOrEmpty(logoUrl)) {
+    /*if (!Strings.isNullOrEmpty(logoUrl)) {
       logo.addClickHandler(new WindowOpenClickHandler(logoUrl));
-    }
+    }*/
     panel.add(logo);
     panel.setCellWidth(logo, "230px");
     panel.setCellHorizontalAlignment(logo, HorizontalPanel.ALIGN_LEFT);

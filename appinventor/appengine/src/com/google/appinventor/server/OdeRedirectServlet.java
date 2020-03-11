@@ -9,6 +9,7 @@ package com.google.appinventor.server;
 import com.google.appinventor.shared.rpc.ServerLayout;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,8 +20,11 @@ import javax.servlet.http.HttpServletResponse;
  *
  */
 public class OdeRedirectServlet extends OdeServlet {
+  private static final Logger LOG = Logger.getLogger(OdeRedirectServlet.class.getName());
+  
   @Override
   public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+	LOG.info("Inside redirect servlet");
     if (req.getHeader("user-agent").contains("Android")) {
       res.sendRedirect(ServerLayout.ODE_BASEURL + ServerLayout.ANDROID_SERVLET);
     } else {

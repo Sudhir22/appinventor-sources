@@ -182,6 +182,8 @@ public class Ode implements EntryPoint {
   // write requests
 
   private boolean isReadOnly;
+  
+  private String projectId;
 
   private String sessionId = generateUuid(); // Create new session id
   private Random random = new Random(); // For generating random nonce
@@ -602,15 +604,19 @@ public class Ode implements EntryPoint {
     resizeWorkArea((WorkAreaPanel) deckPanel.getWidget(debuggingTabIndex));
   }
 
-  public void openPreviousProject() {
+  public void openPreviousProject(User user) {
     if (userSettings == null) {
       OdeLog.wlog("Ignoring openPreviousProject() since userSettings is null");
       return;
     }
     OdeLog.log("Ode.openPreviousProject called");
-    final String value = userSettings.getSettings(SettingsConstants.USER_GENERAL_SETTINGS).
-      getPropertyValue(SettingsConstants.GENERAL_SETTINGS_CURRENT_PROJECT_ID);
-
+    String tempvalue="";
+    if (user.getCurrentProjId()!=0)
+    	tempvalue = String.valueOf(user.getCurrentProjId());
+    else
+    	tempvalue = userSettings.getSettings(SettingsConstants.USER_GENERAL_SETTINGS).
+        getPropertyValue(SettingsConstants.GENERAL_SETTINGS_CURRENT_PROJECT_ID);
+    final String value=tempvalue;
     // Retrieve the userTemplates
     String userTemplates = userSettings.getSettings(SettingsConstants.USER_GENERAL_SETTINGS).
       getPropertyValue(SettingsConstants.USER_TEMPLATE_URLS);
@@ -647,16 +653,20 @@ public class Ode implements EntryPoint {
         openProject(value);
         Window.alert(MESSAGES.galleryIdNotExist());
       }
-    } else {
-      openProject(value);
+    } else if(projectId!=null){
+      openProject(projectId);
+      }
+    else {
+    	openProject(value);
     }
   }
 
   private void openProject(String projectIdString) {
     OdeLog.log("Ode.openProject called for " + projectIdString);
-    if (projectIdString.equals("")) {
+    /*if (projectIdString.equals("")) {
       openPreviousProject();
-    } else if (!projectIdString.equals("0")) {
+    } */
+    if (!projectIdString.equals("0")) {
       final long projectId = Long.parseLong(projectIdString);
       Project project = projectManager.getProject(projectId);
       if (project != null) {
@@ -769,6 +779,8 @@ public class Ode implements EntryPoint {
 
     // Initialize global Ode instance
     instance = this;
+    projectId=Window.Location.getParameter("projID");
+    LOG.info("ProjID"+projectId);
 
     // Let's see if we were started with a repo= parameter which points to a template
     templatePath = Window.Location.getParameter("repo");
@@ -872,9 +884,11 @@ public class Ode implements EntryPoint {
             projectManager.addProjectManagerEventListener(new ProjectManagerEventAdapter() {
               @Override
               public void onProjectsLoaded() {
+            	LOG.info("Opening projects");
+            	LOG.info(user.getUserId());
                 projectManager.removeProjectManagerEventListener(this);
-                if (shouldAutoloadLastProject()) {
-                  openPreviousProject();
+                if (user.getIsAdmin() || shouldAutoloadLastProject()) {
+                  openPreviousProject(user);
                 }
 
                 // This handles any built-in templates stored in /war

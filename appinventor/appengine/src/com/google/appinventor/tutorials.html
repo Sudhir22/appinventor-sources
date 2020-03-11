@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="/css/fonts.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/mit_app_inventor.css">
+    <script type="text/javascript">
+     <!--//--><![CDATA[// ><!--
+
+                                   var gotoappinventor = function() {
+                                       var referrer = document.location.pathname;
+                                       var patt = /.*hour-of-code.*/;
+                                       if (referrer.match(patt)) {
+                                           window.open("http://code.appinventor.mit.edu/", "new");
+                                       } else {
+                                           window.open("http://ai2.appinventor.mit.edu/", "new");
+                                       }
+                                   }
+     //--><!]]>
+    </script>
+    <title>Tutorials for MIT App Inventor</title><script>
+if(!(window.doNotTrack === "1" || navigator.doNotTrack === "1" || navigator.doNotTrack === "yes" || navigator.msDoNotTrack === "1")) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-31803258-1', 'auto');
+  ga('send', 'pageview');
+}
+</script>
+  
+</head>
+<body class="mit_app_inventor"><nav class="navbar navbar-expand-xl navbar-light">
+    <a class="navbar-brand" href="/">
+	<img src="/images/logo.png" alt="Logo">
+    </a>
+    <button type="button" class="btn create-btn" style="margin-right: 20px;" onclick="gotoappinventor();">Create Apps!</button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle Navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+	<ul class="navbar-nav" style="margin-left: auto;">
+	    <li class="nav-item dropdown">
+		<a class="nav-link" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    About
+		</a>
+		<div class="dropdown-menu">
+		    <a class="dropdown-item" href="/about-us">About App Inventor</a>
+		    <a class="dropdown-item" href="/explore/our-team">Our Team</a>
+		    <a class="dropdown-item" href="/explore/master-trainers">Master Trainers</a>
+		    <a class="dropdown-item" href="/explore/app-month-gallery">App of the Month</a>
+                    <a class="dropdown-item"
+                       href="/ai2/ReleaseNotes">Release Notes</a>
+                    <a class="dropdown-item" href="/about/termsofservice" target="_blank">Terms of Service</a>
+		</div>
+	    </li>
+	    <li class="nav-item dropdown">
+		<a class="nav-link" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Educators
+		</a>
+		<div class="dropdown-menu">
+		    <a class="dropdown-item" href="/explore/teach" target="_blank">Teach</a>
+		    <a class="dropdown-item" href="/explore/ai2/tutorials">Tutorials</a>
+		    <a class="dropdown-item" href="/explore/ai-with-mit-app-inventor">AI with App Inventor</a>
+		</div>
+	    </li>
+	    <li class="nav-item dropdown">
+		<a class="nav-link" href="/news" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    News
+		</a>
+		<div class="dropdown-menu">
+		    <a class="dropdown-item" href="/explore/news">In the news</a>
+		    <a class="dropdown-item" href="/explore/events">Events</a>
+		    <a class="dropdown-item" href="/explore/stories">Stories from the field</a>
+		</div>
+	    </li>
+	    <li class="nav-item dropdown">
+		<a class="nav-link" href="/explore/resources" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Resources
+		</a>
+		<div class="dropdown-menu">
+                    <a class="dropdown-item" href="/explore/get-started">Get Started</a>
+		    <a class="dropdown-item" href="/explore/library">Documentation</a>
+		    <a class="dropdown-item" href="https://community.appinventor.mit.edu"
+                       target="_blank">Forums</a>
+		    <a class="dropdown-item" href="/explore/ai2/tutorials">Tutorials</a>
+		    <a class="dropdown-item" href="/explore/books">Books</a>
+		    <a class="dropdown-item"
+                       href="https://github.com/mit-cml/appinventor-sources"
+                       target="_blank">Open Source Information</a>
+	            <a class="dropdown-item" href="/explore/research">Research</a>
+                    <a class="dropdown-item" href="/explore/hour-of-code">Hour of Code</a>
+                    <a class="dropdown-item" href="/explore/resources">Additional Resources</a>
+		</div>
+	    </li>
+            <li class="nav-item dropdown">
+		<a class="nav-link" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Blogs
+		</a>
+                <div class="dropdown-menu">
+		    <a class="dropdown-item" href="/explore/blog">App Inventor Blog</a>
+	        </div>
+            </li>
+        </ul>
+        <div style="display: inline-flex;margin-left:auto;margin-right:0">
+	    <a href="https://giving.mit.edu/give/to?fundId=3832320" target="_blank">
+                <button type="button" class="btn donate-btn" style="margin-right: 20px;">Donate</button></a>
+            <script>
+             (function() {
+                 var cx = '005719495929270354943:tlvxrelje-e';
+                 var gcse = document.createElement('script');
+                 gcse.type = 'text/javascript';
+                 gcse.async = true;
+                 gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                            '//www.google.com/cse/cse.js?cx=' + cx;
+                 var s = document.getElementsByTagName('script')[0];
+                 s.parentNode.insertBefore(gcse, s);
+             })();
+            </script>
+            <gcse:searchbox-only></gcse:searchbox-only>
+        </div>
+	<!-- <form class="form-inline" action="/action_page.php">
+	     <div class="form-group has-search">
+	     <span class="fa fa-search form-control-feedback"></span>
+	     <input type="text" class="form-control" placeholder="Search">
+	     </div>
+	     </form> -->
+    </div>
+</nav>
+<div class="default-page">
+            <div class="header">
+	        <h1 class="font-weight-bold text-center offset-xl-2 col-xl-8"
+                    style="color: white;">Tutorials for MIT App Inventor</h1>
+            </div>
+            <div class="container-fluid">
+                <style>
+    <!--/*--><![CDATA[/* ><!--*/
+
+         .portal{
+         float: left;
+         margin: 1% 2%;
+         width: 220px;
+         position: relative;
+         margin-bottom:2%;
+         }
+         .portal_img{
+         float: left;
+         width:95%;
+         overflow: hidden;
+         }
+         .portal_info{
+         float:right;
+         width:16%;
+         padding-left:4%;
+         padding-bottom:2%;
+         }
+         .portal button{
+         position: absolute;
+         bottom: 0;
+         }
+         .portal_info p{
+         padding-bottom:2%;
+         }
+         .hidden {
+         display: none;
+         }
+
+         /*--><!]]>*/
+</style>
+<div style="overflow: auto;">
+    <div class="portal">
+        <div class="portal_img"><a href="/explore/ai2/beginner-videos"><img src="/explore/sites/explore.appinventor.mit.edu/files/beginner.png" style="width: 100%;height: 100%" title="Build starter apps that buzz, speak to you, play ball, and doodle" /></a></div>
+    </div>
+    <div class="portal">
+        <div class="portal_img"><a href="/explore/ai2/paintpot-part1"><img src="/explore/sites/explore.appinventor.mit.edu/files/paintpot.png" title="Doodle on a picture with your finger." style="width: 100%;height: 100%" /></a></div>
+    </div>
+    <div class="portal">
+        <div class="portal_img"><a href="/explore/ai2/molemash"><img src="/explore/sites/explore.appinventor.mit.edu/files/molemash.png" title="Build a Whack-a-Mole game that keeps score. Learn about touch and timer events." style="width: 100%;height: 100%" /></a></div>
+    </div>
+    <div class="portal">
+        <div class="portal_img"><a href="/explore/app-building-guides"><img src="/explore/sites/explore.appinventor.mit.edu/files/app-building-guides.png" title="App building guides for a range of topical social apps" style="width: 100%;height: 100%" /></a></div>
+    </div>
+</div>
+<p><br/></p>
+<hr />
+<!-- <h3>There are many more tutorials available below. Scroll down to browse the list, or check the appropriate boxes and click"Filter": </h3>  -->
+<h3>There are many more tutorials available below. Scroll down to browse the list.</h3>
+<div class="row news-cards">
+    <div class="col-xl-12">
+	<div class="card-columns">
+            
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Android, Where’s My Car?</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Activity Starter</b><br/>
+                        <b>Difficulty:&nbsp;advanced</b><br/><br/>
+                        <a href="/explore/ai2/android-wheres-my-car" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">CloudDB Chat App</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;CloudDB, ListView</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/clouddb-chat" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Colored Dots</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Drawing Canvas</b><br/>
+                        <b>Difficulty:&nbsp;advanced</b><br/><br/>
+                        <a href="/explore/ai2/colored-dots" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Exploring with the Location Sensor</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Location Sensor</b><br/>
+                        <b>Difficulty:&nbsp;advanced</b><br/><br/>
+                        <a href="/explore/ai2/location-sensor" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Firebase Authentication in App Inventor Using Javascript</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;WebViewer</b><br/>
+                        <b>Difficulty:&nbsp;advanced</b><br/><br/>
+                        <a href="/explore/ai2/firebase" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Get the Gold</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Sprites</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/get-gold" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Hello Codi!</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Unknown</b><br/>
+                        <b>Difficulty:&nbsp;basic</b><br/><br/>
+                        <a href="/explore/ai2/hello-codi" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Hello Purr</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Button, Sound</b><br/>
+                        <b>Difficulty:&nbsp;basic</b><br/><br/>
+                        <a href="/explore/ai2/hellopurr" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">LEGO   EV3 Tilt-to-Drive Tutorial</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;LEGO® EV3</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/lego--ev3-tilt-drive" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">LEGO  EV3 Pet Robot Tutorial</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;LEGO® EV3</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/lego--ev3-pet-robot" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">LEGO EV3 Color Search</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;LEGO® EV3</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/lego-ev3-color-search" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Lego EV3 Pet Robot</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;LEGO® EV3</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/lego-ev3-pet-robot" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Magic 8 Ball</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Game</b><br/>
+                        <b>Difficulty:&nbsp;basic</b><br/><br/>
+                        <a href="/explore/ai2/magic-8-ball" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">MakeQuiz and TakeQuiz for App Inventor 2</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Unknown</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/makequiztakequiz" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Map It: Displaying Locations on a Google Map</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;ListPicker</b><br/>
+                        <b>Difficulty:&nbsp;advanced</b><br/><br/>
+                        <a href="/explore/displaying-maps" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Mini Golf: Fling, TouchUp, TouchDown Gestures for App Inventor 2</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Sprites</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/minigolf" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Mole Mash</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Sprites</b><br/>
+                        <b>Difficulty:&nbsp;basic</b><br/><br/>
+                        <a href="/explore/ai2/molemash" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Mole Mash V2 with Sprite Layering</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;ImageSprites</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/molemash-2" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">NFC Cup Game for AI2</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;NFC (Near Field Comm.)</b><br/>
+                        <b>Difficulty:&nbsp;advanced</b><br/><br/>
+                        <a href="/explore/ai2/cup-game" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">No Texting While Driving</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Texting, TextToSpeech</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/no-text-while-driving-ai2" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Oh My Spikes</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Game</b><br/>
+                        <b>Difficulty:&nbsp;advanced</b><br/><br/>
+                        <a href="/explore/ai2/oh-my-spikes" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Paint Pot Extended with Camera</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Drawing Canvas</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/paint-pot-extended-camera" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">PaintPot (Part 1)</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Drawing Canvas</b><br/>
+                        <b>Difficulty:&nbsp;basic</b><br/><br/>
+                        <a href="/explore/ai2/paintpot-part1" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">PaintPot (Part 2)</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Drawing Canvas</b><br/>
+                        <b>Difficulty:&nbsp;basic</b><br/><br/>
+                        <a href="/explore/ai2/paintpot-part2" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Photo Booth App</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Camera</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/photo-booth-app" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">PicCall</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Unknown</b><br/>
+                        <b>Difficulty:&nbsp;basic</b><br/><br/>
+                        <a href="/explore/ai2/piccall" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">QuizMe for App Inventor 2</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Unknown</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/quizme" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Sharing Component: send files and text with the app of your choice</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;File Sharing</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/file-sharing" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Snippet: Working with Camera Images</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Camera</b><br/>
+                        <b>Difficulty:&nbsp;basic</b><br/><br/>
+                        <a href="/explore/snippet-working-camera" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">Space Invaders</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Sprites</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/space-invaders" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">State Geography Quiz with Map Component</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Map</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/state-geography-quiz" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">VideoWall for App Inventor 2</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;Video</b><br/>
+                        <b>Difficulty:&nbsp;intermediate</b><br/><br/>
+                        <a href="/explore/ai2/videowall" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+	    <div class="card shadow" style="max-height: 535px;">
+		<div class="card-body">
+                    <h4 class="card-title">WebView Javascript Processor for App Inventor</h4>
+                    
+                    <p class="card-text">
+                        <b>Component(s):&nbsp;WebViewer</b><br/>
+                        <b>Difficulty:&nbsp;advanced</b><br/><br/>
+                        <a href="/explore/ai2/webview-javascript" target="_blank">Link to Tutorial</a>
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+            </div>
+            <div class="footer background-green">
+    <div class="row container">
+	<div class="col-xl-3">
+	    <h3>MIT App Inventor</h3>
+	    <!-- <form class="form-inline" action="/action_page.php">
+		 <div class="form-group has-search">
+		 <span class="fa fa-search form-control-feedback"></span>
+		 <input type="text" class="form-control" placeholder="Search">
+		 </div>
+		 </form> -->
+	</div>
+	<div class="col-xl-6 legal text-center">
+	    <ul>
+		<li>
+		    <a href="http://web.mit.edu" class="btn btn-link" role="button"
+                       target="_blank">© 2012-2020 Massachusetts Institute of Technology</a>
+		</li>
+		<li>
+		    <a href="http://creativecommons.org/licenses/by-sa/3.0/"
+                       target="_blank" class="btn btn-link" role="button">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0</a>
+		</li>
+		<li>
+		    <a href="/about/termsofservice"
+                       target="_blank" class="btn btn-link" role="button">Terms of Service and Privacy Policy</a>
+		</li>
+	    </ul>
+	</div>
+	<div class="col-xl-3 links">
+            <a href="https://community.appinventor.mit.edu" target="_blank">Support / Help</a><br>
+            <a href="mailto:appinventor@mit.edu">Other Inquiries</a>
+	    <div>
+		<span>Twitter:</span>
+		<a href="https://twitter.com/mitappinventor"
+                   target="_blank" class="btn btn-link" role="button">@MITAppInventor</a>
+		<div>
+		    <div>
+			<span>GitHub:</span>
+			<a href="https://github.com/mit-cml" class="btn btn-link" role="button"
+                           target="_blank">mit-cml</a>
+			<div>
+			</div>
+	            </div>
+	        </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="/js/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script async src="/js/widgets.js" charset="utf-8"></script>
+</div>
+    </body>
+</html>
+

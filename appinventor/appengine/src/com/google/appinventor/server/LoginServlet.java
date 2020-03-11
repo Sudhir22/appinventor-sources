@@ -7,6 +7,8 @@ package com.google.appinventor.server;
 
 import com.google.appengine.api.users.UserService;
 
+
+
 import com.google.appengine.api.users.UserServiceFactory;
 
 import com.google.appinventor.server.flags.Flag;
@@ -103,7 +105,11 @@ public class LoginServlet extends HttpServlet {
     String galleryId = params.get("galleryId");
     String redirect = params.get("redirect");
     String age="0";
+    String id=params.get("ID");
+    String projID=params.get("projID");
     
+    
+    LOG.info("ProjID "+projID);
     
     	
 
@@ -183,6 +189,8 @@ public class LoginServlet extends HttpServlet {
           .add("repo", repo)
           .add("galleryId", galleryId)
           .add("age", String.valueOf(age))
+          .add("ID", id)
+          .add("projID", projID)
           .add("redirect", redirect).build();
         resp.sendRedirect(uri);
         return;
@@ -265,6 +273,7 @@ public class LoginServlet extends HttpServlet {
     req.setAttribute("locale", locale);
     req.setAttribute("galleryId", galleryId);
     req.setAttribute("age", age);
+    req.setAttribute("projID", projID);
     try {
       req.getRequestDispatcher("/login.jsp").forward(req, resp);
     } catch (ServletException e) {
@@ -357,7 +366,16 @@ public class LoginServlet extends HttpServlet {
 
     String email = params.get("email");
     String password = params.get("password"); // We don't check it now
+    String projID=params.get("projID");
+    LOG.info("Proj ID "+projID);
     User user = storageIo.getUserFromEmail(email,age);
+    if (projID!=null && !projID.equals("null"))
+    {
+    	user.setCurrentProjId(Long.parseLong(projID));
+    	storageIo.setUserprojectId(user.getUserId(), Long.parseLong(projID));
+    }
+    
+    	
     //LOG.info(user.getUserEmail());
     boolean validLogin = false;
 
@@ -392,6 +410,7 @@ public class LoginServlet extends HttpServlet {
     }
     userInfo.setUserId(user.getUserId());
     userInfo.setIsAdmin(user.getIsAdmin());
+    
     String newCookie = userInfo.buildCookie(false);
     if (DEBUG) {
       LOG.info("newCookie = " + newCookie);
@@ -406,9 +425,11 @@ public class LoginServlet extends HttpServlet {
     if (redirect != null && !redirect.equals("")) {
       uri = redirect;
     }
+    LOG.info("URI "+ uri);
     uri = new UriBuilder(uri)
       .add("locale", locale)
       .add("repo", repo)
+      .add("projID", projID)
       .add("galleryId", galleryId).build();
     resp.sendRedirect(uri);
   }

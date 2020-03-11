@@ -57,7 +57,7 @@ public class LocalUser implements UserInfoProvider {
       throw new UnsupportedOperationException("User field should have been initialized.");
     }
   }
-
+  
   @Override
   public String getUserEmail() throws UnsupportedOperationException {
     try {
@@ -157,5 +157,15 @@ public class LocalUser implements UserInfoProvider {
       throw new UnsupportedOperationException("User field should have been initialized.");
     }
   }
+
+@Override
+public long getCurrentProjId() {
+	try {
+	      return user.get().getCurrentProjId();
+	    } catch (NullPointerException e) {
+	      // This should never happen, but just in case...
+	      throw new UnsupportedOperationException("User field should have been initialized.");
+	    }
+}
 
 }

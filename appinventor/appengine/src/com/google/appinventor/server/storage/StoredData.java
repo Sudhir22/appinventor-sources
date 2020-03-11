@@ -62,6 +62,7 @@ public class StoredData {
     
     public int age;
     
+    public long currentProjId;
 
     // Path to template project passed as GET parameter
     String templatePath;
@@ -106,6 +107,9 @@ public class StoredData {
 
     //adding a boolean variable to mark deleted project
     boolean projectMovedToTrashFlag;
+    
+    //check if the project has to be opened
+    boolean isSet;
   }
 
   // Project properties specific to the user
