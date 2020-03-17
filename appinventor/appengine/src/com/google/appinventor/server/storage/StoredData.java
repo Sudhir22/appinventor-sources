@@ -60,7 +60,21 @@ public class StoredData {
     String sessionid;           // uuid of active session
     String password;            // Hashed (PBKDF2 hashing) password
     
-    public int age;
+    public int ageFirstPlayer;
+    public int ageSecondPlayer;
+    public int classFirstPlayer;
+    public int classSecondPlayer;
+    public String genderFirstPlayer;
+    public String genderSecondPlayer;
+    public String subjectsFirstPlayer;
+    public String subjectsSecondPlayer;
+    public String favFirstPlayer;
+    public String favSecondPlayer;
+    public String hobbyFirstPlayer;
+    public String hobbySecondPlayer;
+    public String task1Selection;
+    public String task2Selection;
+    public String task2Colour;
     
     public long currentProjId;
 
