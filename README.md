@@ -1,6 +1,6 @@
 # Welcome to App Creator
 
-This repository maintains code for the app creator software inspired from MIT App Inventor. Introduction about MIT App Inventor is as below.
+This repository maintains code for the <b>App creator</b> software inspired from MIT App Inventor. Introduction about MIT App Inventor is as below.
 
 ## Introduction
 
