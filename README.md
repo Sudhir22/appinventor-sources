@@ -1,4 +1,6 @@
-# Welcome to MIT App Inventor
+# Welcome to App Creator
+
+This repository maintains code for the app creator software inspired from MIT App Inventor. Introduction about MIT App Inventor is as below.
 
 ## Introduction
 
@@ -13,15 +15,6 @@ We provide this code for reference and for experienced people who wish
 to operate their own App Inventor instance and/or contribute to the project.
 
 This code is tested and known to work with Java 8.
-
-## Contributors
-The best way to go about integrating changes in App Inventor is to start a conversation in the [Open Source forum](https://groups.google.com/forum/#!forum/app-inventor-open-source-dev) about whatever you intend to change or add.
-
-We use ***very brief and informal*** design documents with descriptions of the proposed changes and screenshots of how the functionality would look like and behave, in order to gather as much feedback from the community, as early as possible. We generally use shared Google docs for this (with permissions to add comments), but any format that is accessible from a web browser (and allows comments) would do.
-
-If you have skipped this step and have gone ahead and made your changes already, feel free to open a pull request, but don't be too surprised if we ask you to go back and document it in a design document. Remember that the main goal of doing this is ***to gather as much feedback, as early as possible***. We will also possibly ask you to put an instance with your changes on [appspot](http://appspot.com), and provide a modified Companion app (if that applies) so that reviewers can play with the changes before looking at the source.
-
-Check out our open source [site](http://appinventor.mit.edu/appinventor-sources/) to find a lot more information about the project and how to contribute to it.
 
 ## Setup instructions
 
@@ -120,5 +113,3 @@ The automated tests depend on [Phantomjs](http://phantomjs.org/). Make sure you 
 
     $ ant tests
 
-## Need help?
-Contact us through our [Google Group](https://groups.google.com/forum/#!forum/app-inventor-open-source-dev).
