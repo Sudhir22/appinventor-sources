@@ -9,7 +9,10 @@
    String redirect = request.getParameter("redirect");
    String repo = (String) request.getAttribute("repo");
    String galleryId = (String) request.getAttribute("galleryId");
-   if (locale == null) {
+
+    String id = (String) request.getAttribute("ID");
+    String projID = (String) request.getAttribute("projID");
+    if (locale == null) {
        locale = "en";
    }
 
@@ -20,7 +23,7 @@
     <meta HTTP-EQUIV="pragma" CONTENT="no-cache"/>
     <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"/>
     <meta HTTP-EQUIV="expires" CONTENT="0"/>
-    <title>MIT App Inventor</title>
+    <title>Creator</title>
   </head>
 <body>
   <center>
@@ -31,7 +34,8 @@ out.println("<center><font color=red><b>" + error + "</b></font></center><br/>")
    } %>
 <form method=POST action="/login">
 <center><table>
-<tr><td>${emailAddressLabel}</td><td><input type=text name=email value="" size="35"></td></tr>
+<tr><td>${emailAddressLabel}</td><td><% if (id!=null){%><input type=text name=email value="<%= id %>" size="35" readonly>
+<%} else {%><input type=text name=email value="" size="35"><%}%></td></tr>
 <tr><td></td></td>
 <tr><td>${passwordLabel}</td><td><input type=password name=password value="" size="35"></td></tr>
 </table></center>
@@ -51,11 +55,20 @@ out.println("<center><font color=red><b>" + error + "</b></font></center><br/>")
    %>
 <input type=hidden name=redirect value="<%= redirect %>">
 <% } %>
+<% if (id != null && !id.equals("")) {
+   %>
+<input type=hidden name=ID value="<%= id %>">
+<% } %>
+<% if (projID != null && !projID.equals("")) {
+   %>
+<input type=hidden name=projID value="<%= projID %>">
+<% } %>
+
 <p></p>
 <center><input type=Submit value="${login}" style="font-size: 300%;"></center>
 </form>
 <p></p>
-<center><p><a href="/login/sendlink"  style="text-decoration:none;">${passwordclickhereLabel}</a></p></center>
+<!--<center><p><a href="/login/sendlink"  style="text-decoration:none;">${passwordclickhereLabel}</a></p></center>
 <%    if (useGoogleLabel != null && useGoogleLabel.equals("true")) { %>
 <center><p><a href="<%= new UriBuilder("/login/google")
                               .add("locale", locale)
@@ -92,6 +105,6 @@ out.println("<center><font color=red><b>" + error + "</b></font></center><br/>")
 <p style="text-align: center; clear:both;"><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"
                                               target="_blank"><img alt="Creative Commons License" src="/images/cc3.png"></a> <br>
   <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank"></a></p>
-</footer>
+</footer>-->
 </body></html>
 

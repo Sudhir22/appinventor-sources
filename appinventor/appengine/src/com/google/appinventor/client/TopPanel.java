@@ -7,12 +7,15 @@
 package com.google.appinventor.client;
 
 import com.google.appinventor.client.boxes.MotdBox;
+
 import com.google.appinventor.client.explorer.commands.ChainableCommand;
 import com.google.appinventor.client.explorer.commands.SaveAllEditorsCommand;
 import com.google.appinventor.client.tracking.Tracking;
 import com.google.appinventor.client.widgets.DropDownButton.DropDownItem;
 import com.google.appinventor.client.widgets.DropDownButton;
 import com.google.appinventor.client.widgets.TextButton;
+import com.google.appinventor.client.widgets.LabeledTextBox;
+import com.google.gwt.user.client.Timer; 
 import com.google.appinventor.shared.rpc.project.GalleryApp;
 import com.google.appinventor.shared.rpc.project.GalleryAppListResult;
 import com.google.appinventor.shared.rpc.project.ProjectRootNode;
@@ -56,10 +59,11 @@ public class TopPanel extends Composite {
   // Strings for links and dropdown menus:
   private final DropDownButton accountButton;
   public DropDownButton languageDropDown;
-
+  private int count = 3600;
   private final String WIDGET_NAME_MESSAGES = "Messages";
   private final String WIDGET_NAME_PRIVATE_USER_PROFILE = "Profile";
   private final TextButton gallery;
+  private final LabeledTextBox timerText;
   private final TextButton moderation;
   private final String WIDGET_NAME_SIGN_OUT = "Signout";
   private final String WIDGET_NAME_USER = "User";
@@ -125,6 +129,12 @@ public class TopPanel extends Composite {
       links.add(readOnly);
     }
 
+    
+  //Timer TextBox
+    timerText = new LabeledTextBox("Timer");
+    timerText.setStyleName("ode-TopPanelButton");
+    links.add(timerText);
+    
     // My Projects Link
     TextButton myProjects = new TextButton(MESSAGES.myProjectsTabName());
     myProjects.setStyleName("ode-TopPanelButton");
@@ -135,6 +145,8 @@ public class TopPanel extends Composite {
         ode.switchToProjectsView();
       }
     });
+    
+    
 
     myProjects.setStyleName("ode-TopPanelButton");
     links.add(myProjects);
@@ -149,6 +161,12 @@ public class TopPanel extends Composite {
       }
     });
     links.add(viewTrash);
+    
+    
+    
+    
+
+    
 
     // Code on gallerydev branch
     // Gallery Link
@@ -283,6 +301,23 @@ public class TopPanel extends Composite {
     accountButton.addItem(new DropDownItem(WIDGET_NAME_PRIVATE_USER_PROFILE, MESSAGES.privateProfileLink(), new PrivateProfileAction()));
     // (2)Sign Out
     accountButton.addItem(new DropDownItem(WIDGET_NAME_SIGN_OUT, MESSAGES.signOutLink(), new SignOutAction()));
+  }
+  
+  public void updateTimer() {
+	  Timer t = new Timer() {
+	      public void run() {
+	    	timerText.setText(Integer.toString(count) + "s.");
+	        count--;
+	        if(count==0) {
+	            timerText.setText("Time is up!");
+	            this.cancel(); //cancel the timer -- important!
+	            new SignOutAction().execute();
+	        }
+	      }
+	    };
+
+	    // Schedule the timer to run once every second, 1000 ms.
+	    t.scheduleRepeating(1000); //scheduleRepeating(), not just schedule().
   }
 
   private void addLogo(HorizontalPanel panel) {

@@ -36,7 +36,7 @@ public class TosServlet extends OdeServlet {
   private static final Flag<String> initialRedirectionUrl =
       Flag.createFlag("initial.redirection.url", "/");
 
-  private static final String[] PARAMS = new String[] { "locale", "repo", "galleryId","projID" };
+  private static final String[] PARAMS = new String[] { "locale", "repo", "galleryId"};
 
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp)

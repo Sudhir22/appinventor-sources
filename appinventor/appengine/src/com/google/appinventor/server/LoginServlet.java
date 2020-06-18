@@ -106,21 +106,6 @@ public class LoginServlet extends HttpServlet {
     String redirect = params.get("redirect");
     String id = params.get("ID");
     String projID = params.get("projID");
-    String age = params.get("Age");
-    String age2 = params.get("Age2");
-    String grade = params.get("Class");
-    String grade2 = params.get("Class2");
-    String gender = params.get("Gender");
-    String gender2 = params.get("Gender2");
-    String subjects = params.get("subjects");
-    String subjects2 = params.get("subjects2");
-    String fav = params.get("fav");
-    String fav2 = params.get("fav2");
-    String hobby = params.get("hobby");
-    String hobby2 = params.get("hobby2");
-    String task1_selection = params.get("task1_selection");
-    String task2_selection = params.get("task2_selection");
-    String task2_colour = params.get("task2_colour");
     
     
     LOG.info("ProjID "+projID);
@@ -147,10 +132,9 @@ public class LoginServlet extends HttpServlet {
       }
      
       LOG.info("Inside google");
-      LOG.info(String.valueOf(params.get("age")));
       String email = apiUser.getEmail();
       String userId = apiUser.getUserId();
-      User user = storageIo.getUser(userId, email,Integer.parseInt(age),Integer.parseInt(age2),Integer.parseInt(grade),Integer.parseInt(grade2),gender,gender2,subjects,subjects2,fav,fav2,hobby,hobby2,task1_selection,task2_selection,task2_colour);
+      User user = storageIo.getUser(userId, email);
 
       userInfo = new OdeAuthFilter.UserInfo(); // Create a new userInfo object
 
@@ -181,7 +165,6 @@ public class LoginServlet extends HttpServlet {
       uri = new UriBuilder(uri)
         .add("locale", locale)
         .add("repo", repo)
-        .add("Age",String.valueOf(age))
         .add("galleryId", galleryId).build();
       resp.sendRedirect(uri);
       return;
@@ -197,28 +180,12 @@ public class LoginServlet extends HttpServlet {
           out.println("</html>\n");
           return;
         }
-        LOG.info("Inside other "+ age);
         String uri = new UriBuilder("/login/google")
           .add("locale", "en".equals(locale) ? null : locale)
           .add("repo", repo)
           .add("galleryId", galleryId)
-          .add("Age", String.valueOf(age))
           .add("ID", id)
           .add("projID", projID)
-          .add("Age2", age2)
-          .add("Class", grade)
-          .add("Class2", grade2)
-          .add("Gender", gender)
-          .add("Gender2", gender2)
-          .add("subjects", subjects)
-          .add("subjects2", subjects2)
-          .add("fav", fav)
-          .add("fav2", fav2)
-          .add("hobby", hobby)
-          .add("hobby2", hobby2)
-          .add("task1_selection", task1_selection)
-          .add("task2_selection", task2_selection)
-          .add("task2_colour", task2_colour)
           .add("redirect", redirect).build();
         resp.sendRedirect(uri);
         return;
@@ -242,7 +209,7 @@ public class LoginServlet extends HttpServlet {
         LOG.info("setpw email = " + data.email);
       }
       //int age = Integer.parseInt(req.getParameter("Age"));
-      User user = storageIo.getUserFromEmail(data.email,Integer.parseInt(age),Integer.parseInt(age2),Integer.parseInt(grade),Integer.parseInt(grade2),gender,gender2,subjects,subjects2,fav,fav2,hobby,hobby2,task1_selection,task2_selection,task2_colour);
+      User user = storageIo.getUserFromEmail(data.email);
       userInfo = new OdeAuthFilter.UserInfo(); // Create new userInfo object
       userInfo.setUserId(user.getUserId()); // This effectively logs us in!
       out = setCookieOutput(userInfo, resp);
@@ -300,22 +267,7 @@ public class LoginServlet extends HttpServlet {
     req.setAttribute("repo", repo);
     req.setAttribute("locale", locale);
     req.setAttribute("galleryId", galleryId);
-    req.setAttribute("Age", age);
     req.setAttribute("projID", projID);
-    req.setAttribute("Age2", age2);
-    req.setAttribute("Class", grade);
-    req.setAttribute("Class2", grade2);
-    req.setAttribute("Gender", gender);
-    req.setAttribute("Gender2", gender2);
-    req.setAttribute("subjects", subjects);
-    req.setAttribute("subjects2", subjects2);
-    req.setAttribute("fav", fav);
-    req.setAttribute("fav2", fav2);
-    req.setAttribute("hobby", hobby);
-    req.setAttribute("hobby2", hobby2);
-    req.setAttribute("task1_selection", task1_selection);
-    req.setAttribute("task2_selection", task2_selection);
-    req.setAttribute("task2_colour", task2_colour);
     try {
       req.getRequestDispatcher("/login.jsp").forward(req, resp);
     } catch (ServletException e) {
@@ -348,21 +300,6 @@ public class LoginServlet extends HttpServlet {
     String galleryId = params.get("galleryId");
     String redirect = params.get("redirect");
     String id = params.get("ID");
-    String age = params.get("Age");
-    String age2 = params.get("Age2");
-    String grade = params.get("Class");
-    String grade2 = params.get("Class2");
-    String gender = params.get("Gender");
-    String gender2 = params.get("Gender2");
-    String subjects = params.get("subjects");
-    String subjects2 = params.get("subjects2");
-    String fav = params.get("fav");
-    String fav2 = params.get("fav2");
-    String hobby = params.get("hobby");
-    String hobby2 = params.get("hobby2");
-    String task1_selection = params.get("task1_selection");
-    String task2_selection = params.get("task2_selection");
-    String task2_colour = params.get("task2_colour");
     
     
     if (locale == null) {
@@ -426,7 +363,7 @@ public class LoginServlet extends HttpServlet {
     String password = params.get("password"); // We don't check it now
     String projID=params.get("projID");
     LOG.info("Proj ID "+projID);
-    User user = storageIo.getUserFromEmail(email,Integer.parseInt(age),Integer.parseInt(age2),Integer.parseInt(grade),Integer.parseInt(grade2),gender,gender2,subjects,subjects2,fav,fav2,hobby,hobby2,task1_selection,task2_selection,task2_colour);
+    User user = storageIo.getUserFromEmail(email);
     if (projID!=null && !projID.equals("null"))
     {
     	user.setCurrentProjId(Long.parseLong(projID));
@@ -483,13 +420,15 @@ public class LoginServlet extends HttpServlet {
     if (redirect != null && !redirect.equals("")) {
       uri = redirect;
     }
-    LOG.info("URI "+ uri);
+    
     uri = new UriBuilder(uri)
-      .add("locale", locale)
-      .add("repo", repo)
-      .add("projID", projID)
-      .add("galleryId", galleryId).build();
+    	      .add("locale", locale)
+    	      .add("repo", repo)
+    	      .add("galleryId", galleryId).build();
+    LOG.info("URI "+ uri);
     resp.sendRedirect(uri);
+    	
+    
   }
 
   public void destroy() {

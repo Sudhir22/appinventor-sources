@@ -3,6 +3,12 @@
   <application></application>
   <version>1</version>
   <runtime>java8</runtime>
+  <instance-class>B1</instance-class>
+  <basic-scaling>
+	<max-instances>2</max-instances>
+  </basic-scaling>
+  <service> appcreator </service>
+
 
   <!-- Configure serving/caching of GWT files -->
   <static-files>
@@ -102,7 +108,7 @@
          to the site will receive an error page.
      -->
 
-    <property name="auth.usegoogle" value="true" />
+    <property name="auth.usegoogle" value="false" />
     <property name="auth.uselocal" value="true" />
 
     <!-- Flags associated with localauth code -->
@@ -175,7 +181,6 @@
 
     <property name="library.url" value="http://appinventor.mit.edu/explore/library" />
     <property name="get_started.url" value="http://appinventor.mit.edu/explore/get-started" />
-    <property name="tutorials.url" value="http://appinventor.mit.edu/explore/ai2/tutorials" />
     <property name="extensions.url" value="http://appinventor.mit.edu/extensions" />
     <property name="troubleshooting.url" value="http://appinventor.mit.edu/explore/ai2/support/troubleshooting" />
     <property name="forums.url" value="https://groups.google.com/forum/#!forum/mitappinventortest" />
@@ -183,8 +188,10 @@
     <property name="release.notes.url" value="http://appinventor.mit.edu/ai2/ReleaseNotes.html" />
     <property name="tos.url" value="/about/termsofservice.html" />
     <property name="logo.url" value="http://appinventor.mit.edu" />
-    <property name="guide.url" value="http://appinventor.mit.edu/explore/library" />
     <property name="reference.components.url" value="/reference/components/" />
+    <property name="tutorials.url" value="https://storage.googleapis.com/appcreator-tutorials/explore/ai2/tutorials.html" />
+    <property name="guide.url" value="https://storage.googleapis.com/appcreator-tutorials/explore/library.html" />
+
 
     <!-- CloudDB secret keys -->
     <property name="clouddb.server" value="clouddb.example.com"/>

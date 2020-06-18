@@ -1541,9 +1541,16 @@ path.ode-SimpleMockMapFeature-selected {
   width: 100%;
 }
 
-.ode-DialogBox .ode-LabeledTextBox {
+.ode-DialogBox  {
   margin-bottom: 0;
 }
+
+.ode-LabeledTextBox {
+  margin-bottom: 0;
+  font-size: large;
+  font-weight: bold;
+}
+
 
 /* AI2 Extensions Styles */
 

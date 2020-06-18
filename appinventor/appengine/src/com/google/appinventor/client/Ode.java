@@ -182,8 +182,6 @@ public class Ode implements EntryPoint {
   // write requests
 
   private boolean isReadOnly;
-  
-  private String projectId;
 
   private String sessionId = generateUuid(); // Create new session id
   private Random random = new Random(); // For generating random nonce
@@ -411,6 +409,7 @@ public class Ode implements EntryPoint {
           projectToolbar.setPublishOrUpdateButtonVisible(false);
           ProjectListBox.getProjectListBox().getProjectList().setPublishedHeaderVisible(false);
         }
+        topPanel.updateTimer();
       }
     };
     //this is below the call back, but of course it is done first
@@ -653,9 +652,7 @@ public class Ode implements EntryPoint {
         openProject(value);
         Window.alert(MESSAGES.galleryIdNotExist());
       }
-    } else if(projectId!=null){
-      openProject(projectId);
-      }
+    }
     else {
     	openProject(value);
     }
@@ -779,9 +776,7 @@ public class Ode implements EntryPoint {
 
     // Initialize global Ode instance
     instance = this;
-    projectId=Window.Location.getParameter("projID");
-    LOG.info("ProjID"+projectId);
-
+    
     // Let's see if we were started with a repo= parameter which points to a template
     templatePath = Window.Location.getParameter("repo");
     if (templatePath != null) {
@@ -841,7 +836,7 @@ public class Ode implements EntryPoint {
             };
             t.scheduleRepeating(1000*60*noop);
         }
-
+        Log.info("Out "+user.getUserTosAccepted());
         // If user hasn't accepted terms of service, ask them to.
         if (!user.getUserTosAccepted() && !isReadOnly) {
           // We expect that the redirect to the TOS page should be handled

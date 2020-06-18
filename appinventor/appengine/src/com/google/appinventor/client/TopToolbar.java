@@ -158,6 +158,7 @@ public class TopToolbar extends Composite {
     buildDropDown = makeButton(WIDGET_NAME_BUILD, MESSAGES.buildTabName());
     settingsDropDown = makeButton(WIDGET_NAME_SETTINGS, MESSAGES.settingsTabName());
     helpDropDown = makeButton(WIDGET_NAME_HELP, MESSAGES.helpTabName());
+    
 
     createProjectsMenu();
     createConnectMenu();
@@ -178,7 +179,7 @@ public class TopToolbar extends Composite {
       createAdminMenu();
       toolbar.add(adminDropDown);
     }
-
+    
     initWidget(toolbar);
   }
 

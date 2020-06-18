@@ -20,23 +20,6 @@ public class User implements IsSerializable, UserInfoProvider, Serializable {
   // user email address
   private String email;
   
-  //user details
-  private int ageFirstPlayer;
-  private int ageSecondPlayer;
-  private int classFirstPlayer;
-  private int classSecondPlayer;
-  private String genderFirstPlayer;
-  private String genderSecondPlayer;
-  private String subjectsFirstPlayer;
-  private String subjectsSecondPlayer;
-  private String favFirstPlayer;
-  private String favSecondPlayer;
-  private String hobbyFirstPlayer;
-  private String hobbySecondPlayer;
-  private String task1Selection;
-  private String task2Selection;
-  private String task2Colour;
-  
   // user display name
   private String name;
 
@@ -88,37 +71,21 @@ public class User implements IsSerializable, UserInfoProvider, Serializable {
    * @param tosAccepted TOS accepted?
    * @param sessionId client session Id
    */
-  public User(String id, String email, int age,int age2,int grade,int grade2,String gender,String gender2,String subjects,String subjects2,String fav,String fav2,String hobby,String hobby2,String task1,String task2,String task2Colour,String name, String link, int emailFrequency, boolean tosAccepted, boolean isAdmin, long currentProjId,int type, String sessionId) {
-    this.id = id;
-    this.email = email;
-    this.ageFirstPlayer = age;
-    this.ageSecondPlayer = age2;
-    this.classFirstPlayer = grade;
-    this.classSecondPlayer = grade2;
-    this.genderFirstPlayer = gender;
-    this.genderSecondPlayer = gender2;
-    this.subjectsFirstPlayer = subjects;
-    this.subjectsSecondPlayer = subjects2;
-    this.favFirstPlayer = fav;
-    this.favSecondPlayer = fav2;
-    this.hobbyFirstPlayer = hobby;
-    this.hobbySecondPlayer = hobby2;
-    this.task1Selection = task1;
-    this.task2Selection = task2;
-    this.task2Colour = task2Colour;
-    
-    if (name==null)
-      this.name = getDefaultName();
-    else
-      this.name = name;
-    this.tosAccepted = tosAccepted;
-    this.isAdmin = isAdmin;
-    this.link = link;
-    this.emailFrequency = emailFrequency;
-    this.type = type;
-    this.sessionId = sessionId;
-    this.setCurrentProjId(currentProjId);
-  }
+  public User(String id, String email, String name, String link, int emailFrequency, boolean tosAccepted, boolean isAdmin, int type, String sessionId) {
+	    this.id = id;
+	    this.email = email;
+	    if (name==null)
+	      this.name = getDefaultName();
+	    else
+	      this.name = name;
+	    this.tosAccepted = tosAccepted;
+	    this.isAdmin = isAdmin;
+	    this.link = link;
+	    this.emailFrequency = emailFrequency;
+	    this.type = type;
+	    this.sessionId = sessionId;
+	    this.currentProjId = currentProjId;
+	  }
 
   /**
    * Default constructor. This constructor is required by GWT.
@@ -365,7 +332,7 @@ public class User implements IsSerializable, UserInfoProvider, Serializable {
   }
 
   public User copy() {
-    User retval = new User(id, email, ageFirstPlayer,ageSecondPlayer,classFirstPlayer,classSecondPlayer,genderFirstPlayer,genderSecondPlayer,subjectsFirstPlayer,subjectsSecondPlayer,favFirstPlayer,favSecondPlayer,hobbyFirstPlayer,hobbySecondPlayer,task1Selection,task2Selection,task2Colour, name, link, emailFrequency, tosAccepted, isAdmin, currentProjId, type, sessionId);
+	User retval = new User(id, email, name, link, emailFrequency, tosAccepted, isAdmin, type, sessionId);
     // We set the isReadOnly flag in the copy in this fashion so we do not have to
     // modify all the places in the source where we create a "User" object. There are
     // only a few places where we assert or read the isReadOnly flag, so we want to
@@ -386,123 +353,5 @@ public void setCurrentProjId(long currentProjId) {
 	this.currentProjId = currentProjId;
 }
 
-public int getAgeFirstPlayer() {
-	return ageFirstPlayer;
-}
 
-public void setAgeFirstPlayer(int ageFirstPlayer) {
-	this.ageFirstPlayer = ageFirstPlayer;
-}
-
-public int getAgeSecondPlayer() {
-	return ageSecondPlayer;
-}
-
-public void setAgeSecondPlayer(int ageSecondPlayer) {
-	this.ageSecondPlayer = ageSecondPlayer;
-}
-
-public int getClassFirstPlayer() {
-	return classFirstPlayer;
-}
-
-public void setClassFirstPlayer(int classFirstPlayer) {
-	this.classFirstPlayer = classFirstPlayer;
-}
-
-public int getClassSecondPlayer() {
-	return classSecondPlayer;
-}
-
-public void setClassSecondPlayer(int classSecondPlayer) {
-	this.classSecondPlayer = classSecondPlayer;
-}
-
-public String getGenderFirstPlayer() {
-	return genderFirstPlayer;
-}
-
-public void setGenderFirstPlayer(String genderFirstPlayer) {
-	this.genderFirstPlayer = genderFirstPlayer;
-}
-
-public String getGenderSecondPlayer() {
-	return genderSecondPlayer;
-}
-
-public void setGenderSecondPlayer(String genderSecondPlayer) {
-	this.genderSecondPlayer = genderSecondPlayer;
-}
-
-public String getSubjectsFirstPlayer() {
-	return subjectsFirstPlayer;
-}
-
-public void setSubjectsFirstPlayer(String subjectsFirstPlayer) {
-	this.subjectsFirstPlayer = subjectsFirstPlayer;
-}
-
-public String getSubjectsSecondPlayer() {
-	return subjectsSecondPlayer;
-}
-
-public void setSubjectsSecondPlayer(String subjectsSecondPlayer) {
-	this.subjectsSecondPlayer = subjectsSecondPlayer;
-}
-
-public String getFavFirstPlayer() {
-	return favFirstPlayer;
-}
-
-public void setFavFirstPlayer(String favFirstPlayer) {
-	this.favFirstPlayer = favFirstPlayer;
-}
-
-public String getFavSecondPlayer() {
-	return favSecondPlayer;
-}
-
-public void setFavSecondPlayer(String favSecondPlayer) {
-	this.favSecondPlayer = favSecondPlayer;
-}
-
-public String getHobbyFirstPlayer() {
-	return hobbyFirstPlayer;
-}
-
-public void setHobbyFirstPlayer(String hobbyFirstPlayer) {
-	this.hobbyFirstPlayer = hobbyFirstPlayer;
-}
-
-public String getHobbySecondPlayer() {
-	return hobbySecondPlayer;
-}
-
-public void setHobbySecondPlayer(String hobbySecondPlayer) {
-	this.hobbySecondPlayer = hobbySecondPlayer;
-}
-
-public String getTask1Selection() {
-	return task1Selection;
-}
-
-public void setTask1Selection(String task1Selection) {
-	this.task1Selection = task1Selection;
-}
-
-public String getTask2Selection() {
-	return task2Selection;
-}
-
-public void setTask2Selection(String task2Selection) {
-	this.task2Selection = task2Selection;
-}
-
-public String getTask2Colour() {
-	return task2Colour;
-}
-
-public void setTask2Colour(String task2Colour) {
-	this.task2Colour = task2Colour;
-}
 }

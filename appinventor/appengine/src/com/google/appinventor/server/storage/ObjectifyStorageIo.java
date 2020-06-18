@@ -237,7 +237,7 @@ public class ObjectifyStorageIo implements  StorageIo {
 
   @Override
   public User getUser(String userId) {
-    return getUser(userId, null, 0,0,0,0,null,null,null,null,null,null,null,null,null,null,null);
+    return getUser(userId, null);
   }
 
   /*
@@ -247,7 +247,7 @@ public class ObjectifyStorageIo implements  StorageIo {
    * then isAdmin will be set by our caller.
    */
   @Override
-  public User getUser(final String userId, final String email,final int age,final int age2,final int grade,final int grade2,final String gender,final String gender2,final String subjects,final String subjects2,final String fav,final String fav2,final String hobby,final String hobby2,final String task1,final String task2,final String task2Colour) {
+  public User getUser(final String userId, final String email) {
     String cachekey = User.usercachekey + "|" + userId;
     User tuser = (User) memcache.get(cachekey);
     if (tuser != null && tuser.getUserTosAccepted() && ((email == null) || (tuser.getUserEmail().equals(email)))) {
@@ -258,7 +258,7 @@ public class ObjectifyStorageIo implements  StorageIo {
       return tuser;
     } else {                    // If not in memcache, or tos
                                 // not yet accepted, fetch from datastore
-        tuser = new User(userId, email, age,age2,grade,grade2,gender,gender2,subjects,subjects2,fav,fav2,hobby,hobby2,task1,task2,task2Colour, null, null, 0, false, false, 0,0, null);
+        tuser = new User(userId, email,null, null, 0, false, false, 0, null);
     }
     final User user = tuser;
     try {
@@ -287,7 +287,7 @@ public class ObjectifyStorageIo implements  StorageIo {
               }
             }
             if (userData == null) { // No joy, create it.
-            	userData = createUser(datastore, userId, email,age,age2,grade,grade2,gender,gender2,subjects,subjects2,fav,fav2,hobby,hobby2,task1,task2,task2Colour);
+            	userData = createUser(datastore, userId, email);
             }
           } else if (email != null && !email.equals(userData.email)) {
             userData.email = email;
@@ -312,21 +312,6 @@ public class ObjectifyStorageIo implements  StorageIo {
           }
           user.setUserEmail(userData.email);
           user.setUserName(userData.name);
-          user.setAgeFirstPlayer(age);
-          user.setAgeSecondPlayer(age2);
-          user.setClassFirstPlayer(grade);
-          user.setClassSecondPlayer(grade2);
-          user.setGenderFirstPlayer(gender);
-          user.setGenderSecondPlayer(gender2);
-          user.setSubjectsFirstPlayer(subjects);
-          user.setSubjectsSecondPlayer(subjects2);
-          user.setFavFirstPlayer(fav);
-          user.setFavSecondPlayer(fav2);
-          user.setHobbyFirstPlayer(hobby);
-          user.setHobbySecondPlayer(hobby2);
-          user.setTask1Selection(task1);
-          user.setTask2Selection(task2);
-          user.setTask2Colour(task2Colour);
           user.setUserLink(userData.link);
           user.setUserEmailFrequency(userData.emailFrequency);
           user.setType(userData.type);
@@ -352,7 +337,7 @@ public class ObjectifyStorageIo implements  StorageIo {
   // Get User from email address alone. This version will create the user
   // if they don't exist
   @Override
-  public User getUserFromEmail(final String email,final int age,final int age2,final int grade,final int grade2,final String gender,final String gender2,final String subjects,final String subjects2,final String fav,final String fav2,final String hobby,final String hobby2,final String task1,final String task2,final String task2Colour) {
+  public User getUserFromEmail(final String email) {
     String emaillower = email.toLowerCase();
     LOG.info("getUserFromEmail: email = " + email + " emaillower = " + emaillower);
     Objectify datastore = ObjectifyService.begin();
@@ -365,11 +350,10 @@ public class ObjectifyStorageIo implements  StorageIo {
       user = datastore.query(UserData.class).filter("emaillower", emaillower).get();
       if (user == null) {       // Finally, create it (in lower case)
         LOG.info("getUserFromEmail: second attempt failed using " + emaillower);
-        user = createUser(datastore, newId, email,age,age2,grade,grade2,gender,gender2,subjects,subjects2,fav,fav2,hobby,hobby2,task1,task2,task2Colour);
+        user = createUser(datastore, newId, email);
       }
     }
-    User retUser = new User(user.id, email,age,age2,grade,grade2,gender,gender2,subjects,subjects2,fav,fav2,hobby,hobby2,task1,task2,task2Colour,user.name, user.link, 0, user.tosAccepted,
-    	user.isAdmin, 0,user.type, user.sessionid);
+    User retUser = new User(user.id, email,user.name,user.link,user.emailFrequency,user.tosAccepted,user.isAdmin,user.type,user.sessionid);
     	
     retUser.setPassword(user.password);
     return retUser;
@@ -378,7 +362,7 @@ public class ObjectifyStorageIo implements  StorageIo {
 
   
   
-  private UserData createUser(Objectify datastore, String userId, String email, int age,int age2,int grade,int grade2,String gender,String gender2,String subjects,String subjects2,String fav,String fav2,String hobby,String hobby2,String task1,String task2,String task2Colour) {
+  private UserData createUser(Objectify datastore, String userId, String email) {
     String emaillower = null;
     if (email != null) {
       emaillower = email.toLowerCase();
@@ -391,21 +375,6 @@ public class ObjectifyStorageIo implements  StorageIo {
     userData.name = User.getDefaultName(email);
     userData.type = User.USER;
     userData.link = "";
-    userData.ageFirstPlayer = age;
-    userData.ageSecondPlayer = age2;
-    userData.classFirstPlayer = grade;
-    userData.classSecondPlayer = grade2;
-    userData.genderFirstPlayer = gender;
-    userData.genderSecondPlayer = gender2;
-    userData.subjectsFirstPlayer = subjects;
-    userData.subjectsSecondPlayer = subjects2;
-    userData.favFirstPlayer = fav;
-    userData.favSecondPlayer = fav2;
-    userData.hobbyFirstPlayer = hobby;
-    userData.hobbySecondPlayer = hobby2;
-    userData.task1Selection = task1;
-    userData.task2Selection = task2;
-    userData.task2Colour = task2Colour;
     userData.emaillower = email == null ? "" : emaillower;
     userData.emailFrequency = User.DEFAULT_EMAIL_NOTIFICATION_FREQUENCY;
     if (email.contains("admin"))
