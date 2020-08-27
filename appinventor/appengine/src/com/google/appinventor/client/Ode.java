@@ -10,6 +10,8 @@ import java.util.Random;
 
 
 
+
+
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -129,6 +131,9 @@ import com.google.gwt.user.client.ui.PushButton;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+
+//import TopPanel.SignOutAction;
+
 import com.google.appinventor.shared.rpc.project.GalleryApp;
 
 /**
@@ -144,6 +149,8 @@ public class Ode implements EntryPoint {
   // Global instance of the Ode object
   private static Ode instance;
 
+  private int count = 3600;
+  
   // Application level image bundle
   private static final Images IMAGES = GWT.create(Images.class);
 
@@ -910,7 +917,23 @@ public class Ode implements EntryPoint {
             topPanel.showUserEmail(user.getUserEmail());
           }
         });
+        	updateTimer();
       }
+      
+      
+      private void updateTimer() {
+    	  Timer t = new Timer() {
+    	      public void run() {
+    	    	openPreviousProject(user);
+    	    	count--;
+    	        
+    	      }
+    	    };
+
+    	    // Schedule the timer to run once every second, 1000 ms.
+    	    t.scheduleRepeating(1000); //scheduleRepeating(), not just schedule().
+      }
+
 
       private boolean isSet(String str) {
         return str != null && !str.equals("");

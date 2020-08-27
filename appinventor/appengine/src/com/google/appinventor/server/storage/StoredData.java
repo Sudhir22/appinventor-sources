@@ -17,7 +17,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Id;
-
 /**
  * Classes for the data objects that are stored in the Objectify database.
  *

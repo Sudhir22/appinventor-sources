@@ -6,6 +6,7 @@
 package com.google.appinventor.client.explorer.dialogs;
 
 import com.google.appinventor.client.Ode;
+
 import com.google.appinventor.client.explorer.project.Project;
 import com.google.appinventor.client.wizards.NewProjectWizard.NewProjectCommand;
 import com.google.appinventor.client.wizards.TemplateUploadWizard;
@@ -18,6 +19,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.Widget;
+import com.google.gwt.user.client.Window;
 
 /**
  * A dialog containing options to begin 3 different tutorials or being a new
@@ -73,14 +75,16 @@ public class NoProjectDialogBox extends DialogBox {
 
   @UiHandler("goToPurr")
   void handleGoToPurr(ClickEvent e) {
-    this.hide();
-    new TemplateUploadWizard().createProjectFromExistingZip("HelloPurr", new NewTutorialProject());
+    //this.hide();
+    //new TemplateUploadWizard().createProjectFromExistingZip("HelloPurr", new NewTutorialProject());
+    Window.open("https://storage.googleapis.com/appcreator-tutorials/explore/ai2/hellopurr.html", "_blank", "");
   }
 
   @UiHandler("goToTalk")
   void handleGoToTalk(ClickEvent e) {
-    this.hide();
-    TemplateUploadWizard.openProjectFromTemplate("http://appinventor.mit.edu/yrtoolkit/yr/aiaFiles/talk_to_me/TalkToMe.asc", new NewTutorialProject());
+    //this.hide();
+    //TemplateUploadWizard.openProjectFromTemplate("http://appinventor.mit.edu/yrtoolkit/yr/aiaFiles/talk_to_me/TalkToMe.asc", new NewTutorialProject());
+	  
   }
 
   @UiHandler("goToYR")

@@ -20,7 +20,7 @@
       border-radius: 5px;
       color: #8fc202;
       text-transform: uppercase;
-      font-size: 13px;
+      font-size: 24px;
     }
 
     .ode-tutorialButton:hover {
@@ -49,7 +49,7 @@
 
     .ode-noDialogNewProject {
       text-transform: uppercase;
-      font-size: 12px;
+      font-size: 24px;
       text-decoration: none;
       text-align: center;
       padding: 5px 8px;
@@ -83,7 +83,7 @@
     <h3 class="ode-tutorialsTitle">
       <ui:msg key="getStarted"
               description="The header text instructing the new user to get started.">
-        Get started with some tutorials
+        Welcome!!!! Let's get started with some tutorials
       </ui:msg>
     </h3>
 
@@ -94,9 +94,9 @@
             <ui:msg key="helloPurrTitle"
                     description="Title of the Hello Purr app">Hello Purr</ui:msg>
           </h4>
-          <!-- <div class="ode-noDialogExampleImage">
+           <div class="ode-noDialogExampleImage">
             <g:Image resource="{res.wilson}" altText="Wilson Logo" />
-          </div>  -->
+          </div>  
           <p class="ode-noDialogExampleAbout">
             <ui:msg key="helloPurrDescription" description="Description of the Hello Purr app">
               HelloPurr is a simple app that you can build in a very short time.
@@ -119,9 +119,9 @@
             <ui:msg key="talkToMeTitle"
                     description="Title of the Talk to Me app">Talk to Me</ui:msg>
           </h4>
-          <!-- <div class="ode-noDialogExampleImage">
+          <div class="ode-noDialogExampleImage">
             <g:Image resource="{res.talkToMeLogo}" altText="Talk to Me Logo" />
-          </div>  -->
+          </div>  
 
           <p class="ode-noDialogExampleAbout">
             <ui:msg key="talkToMeDescription" description="Description of the Talk to Me app">
@@ -142,9 +142,9 @@
             <ui:msg key="translateAppTitle"
                     description="Title of the Translate App">Translate App</ui:msg>
           </h4>
-          <!-- <div class="ode-noDialogExampleImage">
+          <div class="ode-noDialogExampleImage">
             <g:Image resource="{res.YRLogo}" altText="YR Media Logo" />
-          </div>  -->
+          </div> 
           <p class="ode-noDialogExampleAbout">
             <ui:msg key="translateAppDescription" description="Description of the Translate app">
               Quickly translate English to Spanish (and other languages too!)
@@ -166,7 +166,7 @@
     <div class="ode-bottomRow">
         <g:Button ui:field='noDialogNewProject' styleName="{style.ode-noDialogNewProject}">
           <ui:msg key="startProjectButton" description="Text of the button to start a new project"
-          >Start a blank project</ui:msg>
+          >I am done with the tutorial. Let's create!!!!</ui:msg>
         </g:Button>
         <g:Button ui:field='closeDialogBox' styleName='{style.ode-closeDialogBox}'>
           <ui:msg key="closeButton" description="Text of the button to close the dialog box"

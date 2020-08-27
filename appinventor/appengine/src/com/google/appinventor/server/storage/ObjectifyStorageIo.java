@@ -6,7 +6,11 @@
 
 package com.google.appinventor.server.storage;
 
+//import com.firebase.client.Firebase;
+//import com.google.firebase.database;
+
 import com.google.appengine.api.appidentity.AppIdentityService;
+
 import com.google.appengine.api.appidentity.AppIdentityServiceFactory;
 import com.google.appengine.api.appidentity.AppIdentityServiceFailureException;
 import com.google.appengine.api.blobstore.BlobKey;
@@ -109,6 +113,7 @@ import org.json.JSONObject;
  *
  */
 public class ObjectifyStorageIo implements  StorageIo {
+
   static final Flag<Boolean> requireTos = Flag.createFlag("require.tos", false);
 
   private static final Logger LOG = Logger.getLogger(ObjectifyStorageIo.class.getName());

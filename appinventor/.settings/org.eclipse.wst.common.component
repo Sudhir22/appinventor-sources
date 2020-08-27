@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="appinventor">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/aimerger_for_appinv_classic/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/aimerger/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/appengine/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/appengine/tests"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/blocklyeditor/tests"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/build/components/ComponentTranslation/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/buildserver/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/buildserver/tests"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/common/build/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/common/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/common/tests"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/components/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/components/tests"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/misc/companionextras-extension"/>
+        <property name="context-root" value="appinventor"/>
+        <property name="java-output-path" value="/appinventor/appengine/build/classes/AiRebindLib"/>
+    </wb-module>
+</project-modules>

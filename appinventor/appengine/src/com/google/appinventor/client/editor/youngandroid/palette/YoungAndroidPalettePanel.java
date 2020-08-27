@@ -142,6 +142,11 @@ public class YoungAndroidPalettePanel extends Composite implements SimplePalette
         public String next() {
           return NativeArray.this.get(index++);
         }
+        
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
       };
     }
   }
