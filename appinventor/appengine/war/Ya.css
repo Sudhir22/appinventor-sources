@@ -354,7 +354,7 @@ body {
 .ode-TopPanelLinks .gwt-Anchor,
 .ode-TopPanelLinks .gwt-TitleLabel {
   cursor: pointer;
-  color: rgb(100, 100, 100);
+  color: rgb(65,105,225);
   font-weight: 300;
   font-size: 18px;
   margin-right: 16px;
@@ -1393,7 +1393,7 @@ path.ode-SimpleMockMapFeature-selected {
 }
 
 .ode-noDialogDivHeader {
-  background-color: #a5cf47;
+  background-color: #00008B;
   height: 10%;
   padding: 10px;
   border-bottom: 1px #e9e9e9 solid;
@@ -1425,12 +1425,14 @@ path.ode-SimpleMockMapFeature-selected {
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
+  background-color:#ADD8E6;
 }
 
 .ode-noDialogExampleDivs {
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
+  background-color: #ADD8E6;
 }
 
 .ode-noDialogExampleDiv {
@@ -1445,12 +1447,13 @@ path.ode-SimpleMockMapFeature-selected {
   border-radius: 15px;
   padding: 15px;
   margin: 10px 0px;
+  background-color: yellow;
 }
 
 .ode-noDialogExampleTitle {
   margin-top: 0;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 20px;
 }
 
 .ode-noDialogExampleImage {
@@ -1461,7 +1464,7 @@ path.ode-SimpleMockMapFeature-selected {
 }
 
 .ode-noDialogExampleAbout {
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .ode-noDialogUpperDiv {

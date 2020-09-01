@@ -149,6 +149,7 @@ public class TopToolbar extends Composite {
     HorizontalPanel toolbar = new HorizontalPanel();
     toolbar.setVerticalAlignment(HorizontalPanel.ALIGN_MIDDLE);
 
+
     // Should the UI be in read only mode?
     isReadOnly = Ode.getInstance().isReadOnly();
 

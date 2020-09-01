@@ -94,9 +94,9 @@
             <ui:msg key="helloPurrTitle"
                     description="Title of the Hello Purr app">Hello Purr</ui:msg>
           </h4>
-           <div class="ode-noDialogExampleImage">
+           <!-- <div class="ode-noDialogExampleImage">
             <g:Image resource="{res.wilson}" altText="Wilson Logo" />
-          </div>  
+          </div>-->  
           <p class="ode-noDialogExampleAbout">
             <ui:msg key="helloPurrDescription" description="Description of the Hello Purr app">
               HelloPurr is a simple app that you can build in a very short time.
