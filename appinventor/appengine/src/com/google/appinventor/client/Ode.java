@@ -1033,6 +1033,7 @@ public class Ode implements EntryPoint {
     statusPanel = new StatusPanel();
 
     DockPanel mainPanel = new DockPanel();
+    mainPanel.setStyleName("ode-MainPanel");
     mainPanel.add(topPanel, DockPanel.NORTH);
 
     // Create the Tutorial Panel

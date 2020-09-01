@@ -42,7 +42,7 @@ body {
   padding: 20px;
 }
 .page {
-  background: #e2e2e5;
+  background: url(images/TutorialBackground.jpg);
   display: flex;
   flex-direction: column;
   height: calc(100% - 40px);
