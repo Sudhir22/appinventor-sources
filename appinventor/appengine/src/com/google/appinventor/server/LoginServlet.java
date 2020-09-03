@@ -269,6 +269,7 @@ public class LoginServlet extends HttpServlet {
     req.setAttribute("locale", locale);
     req.setAttribute("galleryId", galleryId);
     req.setAttribute("projID", projID);
+    req.setAttribute("ID", id);
     try {
       req.getRequestDispatcher("/login.jsp").forward(req, resp);
     } catch (ServletException e) {

@@ -79,15 +79,14 @@
         
       </div>
     </div>
-
+	
     <h3 class="ode-tutorialsTitle">
       <ui:msg key="getStarted"
               description="The header text instructing the new user to get started.">
         Welcome!!!! Let's get started with some tutorials
       </ui:msg>
     </h3>
-
-    <div class="ode-noDialogExampleDivs">
+	<div class="ode-noDialogExampleDivs">
       <div class="ode-noDialogExampleDiv">
         <div class='ode-noDialogUpperDiv'>
           <h4 class="ode-noDialogExampleTitle">
@@ -119,14 +118,14 @@
             <ui:msg key="talkToMeTitle"
                     description="Title of the Talk to Me app">Talk to Me</ui:msg>
           </h4>
-          <div class="ode-noDialogExampleImage">
+          <!--  <div class="ode-noDialogExampleImage">
             <g:Image resource="{res.talkToMeLogo}" altText="Talk to Me Logo" />
-          </div>  
+          </div>-->  
 
           <p class="ode-noDialogExampleAbout">
             <ui:msg key="talkToMeDescription" description="Description of the Talk to Me app">
-            Text to Speech is surprisingly fun. Find out for yourself with this
-            starter app that talks.
+            Build an 8 ball where your 8 ball will deliver one of its classic predictions, 
+            such as It is decidedly so or Reply hazy, try again.
             </ui:msg>
           </p>
         </div>
@@ -142,17 +141,13 @@
             <ui:msg key="translateAppTitle"
                     description="Title of the Translate App">Translate App</ui:msg>
           </h4>
-          <div class="ode-noDialogExampleImage">
+          <!-- <div class="ode-noDialogExampleImage">
             <g:Image resource="{res.YRLogo}" altText="YR Media Logo" />
-          </div> 
+          </div>--> 
           <p class="ode-noDialogExampleAbout">
             <ui:msg key="translateAppDescription" description="Description of the Translate app">
-              Quickly translate English to Spanish (and other languages too!)
-              You're challenged with creating an app that could act as an aid
-              for immigrant parents who need a little extra help in
-              English-speaking situations. Inspired by YR Media story
-              <a href="https://yr.media/news/what-its-like-to-be-a-translator/" target="_blank"
-                 ui:ph="yrMediaLink">What It's Like to be a Translator</a>.
+             In the arcade game Whac a Mole TM, a mole pops up at random positions on a playing field, 
+             and the user score points by hitting the mole with a mallet.
             </ui:msg>
           </p>
         </div>
