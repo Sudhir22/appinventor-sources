@@ -1390,14 +1390,14 @@ path.ode-SimpleMockMapFeature-selected {
 .ode-noDialogDiv {
   box-shadow: 0 0 10px gray;
   min-width: 700px;
-  width: 100%;
+  width: 80%;
   height: 80%;
-  background-color: #ADD8E6;
+  background-color: #4d97ff;
   padding-bottom: 25px;
 }
 
 .ode-noDialogDivHeader {
-  background-color: #ADD8E6;
+  background-color: #4d97ff;
   height: 10%;
   padding: 10px;
   border-bottom: 1px #e9e9e9 solid;
@@ -1435,7 +1435,7 @@ path.ode-SimpleMockMapFeature-selected {
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
-  background-color: #ADD8E6;
+  background-color: #4d97ff;
 }
 
 .ode-noDialogExampleDiv {
